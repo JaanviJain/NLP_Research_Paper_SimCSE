@@ -135,9 +135,29 @@ Gradient checkpointing was introduced to make the supervised batch size of 512 f
 | Unsupervised RoBERTa-base | 76.57 | 75.72 | −0.85 |
 | Supervised RoBERTa-base | 82.52 | 82.38 | −0.14 |
 
+![7-task STS average: paper vs replication](charts/chart1_avg_paper_vs_ours.png)
+
 ### Unsupervised BERT Detailed Results
 
 The implementation outperformed the published result on 5 of the 7 evaluation tasks, with an overall improvement of +0.79 points.
+
+| Task | Paper | This Project | Difference |
+|---|---|---|---|
+| STS12 | 68.40 | 70.55 | +2.15 |
+| STS13 | 82.41 | 82.97 | +0.56 |
+| STS14 | 74.38 | 74.46 | +0.08 |
+| STS15 | 80.91 | 82.05 | +1.14 |
+| STS16 | 78.56 | 78.59 | +0.03 |
+| STS-B | 76.85 | 78.40 | +1.55 |
+| SICK-R | 72.23 | 72.21 | −0.02 |
+
+![Unsupervised SimCSE-BERT per-task Spearman: paper vs replication](charts/chart2_pertask_unsup_bert.png)
+
+### Per-Task Difference Across All Models
+
+The heatmap below shows (this project − paper) for every model and task. Green means the replication scored higher; red means lower.
+
+![Per-task difference heatmap: ours minus paper](charts/chart5_diff_heatmap.png)
 
 ### Training Performance
 
@@ -146,6 +166,8 @@ The implementation outperformed the published result on 5 of the 7 evaluation ta
 | Unsupervised BERT (Seed 42) | Batch 64, LR 3e-5, 1 epoch | 83.28 |
 | Supervised BERT v2 | Batch 512, LR 5e-5, 3 epochs | 85.43 |
 | Supervised RoBERTa | Batch 512, LR 5e-5, 3 epochs | 87.64 |
+
+![Unsupervised and supervised training curves on STS-B dev](charts/chart3_training_curves.png)
 
 ---
 
@@ -158,6 +180,8 @@ SimCSE is designed to improve the geometry of the embedding space. We measure **
 | Vanilla BERT | 0.190 | −1.005 |
 | Unsupervised SimCSE | 0.355 | −2.320 |
 | Supervised SimCSE | 0.528 | −3.716 |
+
+![Alignment vs uniformity of the embedding space](charts/chart4_align_uniform.png)
 
 Contrastive training substantially changes the geometry of the sentence embedding space, drastically improving uniformity.
 
